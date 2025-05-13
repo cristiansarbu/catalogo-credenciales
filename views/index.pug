@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to mis datos 
+  
+  each credencial in datosJson
+    div(class="credential-card")
+      h2 #{credencial.id}
+      h3 #{credencial.time}
+      p #{credencial.data.id}
+
