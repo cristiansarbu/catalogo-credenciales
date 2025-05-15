@@ -3,5 +3,17 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+  body  
+    .navbar
+      h1 Gaia-X Catalogue
+      ul.nav-list 
+        li.nav-item
+          a.nav-link(href="/") Inicio
+        li.nav-item
+          a.nav-link(href="/credentials") Credenciales
+        li.nav-item
+          a.nav-link(href="/credential-by-id") Credencial por ID
+        li.nav-item
+          a.nav-link(href="/upload-credential") Subir credencial
+    main
+      block content
