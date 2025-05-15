@@ -118,3 +118,24 @@ p {
 main {
   padding: 50px;
 }
+
+.button-container {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.button-container button {
+  padding: 7px 30px;
+  color: white;
+  background-color: #106cfc;
+  /* background-color: #70747c; */
+  border: 0;
+  border-radius: 5px;
+}
+
+.button-container button:hover {
+  background-color: #105cd4;
+  /* background-color: #5c636a; */
+}

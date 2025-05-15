@@ -4,6 +4,8 @@ const datosJson = require("../public/misc/test.json")
 
 module.exports = {
   get: (req, res) => {
+    // Recibe: /credential-by-id/{id}?detailed={true} -> Route parameter y query parameter
+    const queryParameters = req.query;
     if (req.params.id) {
         // Axios no permite hacer solicitudes con route param dinámico -> crear el enlace de la query manualmente
         const requestUrl = `https://ces-main.lab.gaia-x.eu/credentials-events/${req.params.id}`
@@ -11,7 +13,12 @@ module.exports = {
               .get(requestUrl)
               .then((response) => {
                 const datosJson = response.data;
-                res.render("credential-by-id/credential-by-id", { datosJson });
+
+                if (queryParameters.detailed == 'true') {
+                  res.json(datosJson);
+                } else {
+                  res.render("credential-by-id/credential-by-id", { datosJson });
+                }
               })
               .catch((error) => {
                 res.render("error", { error });
