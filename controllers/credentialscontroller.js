@@ -23,7 +23,7 @@ module.exports = {
         res.render("credentials", { datosJson, datosParams });
       })
       .catch((error) => {
-        res.send("Error fetching data: " + error);
+        res.render("error", { error });
       });
   },
 };

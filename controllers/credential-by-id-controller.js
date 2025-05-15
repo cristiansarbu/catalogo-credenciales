@@ -14,7 +14,7 @@ module.exports = {
                 res.render("credential-by-id/credential-by-id", { datosJson });
               })
               .catch((error) => {
-                res.send("Error fetching data: " + error);
+                res.render("error", { error });
               });
     } else {
         res.render("credential-by-id/credential-search")

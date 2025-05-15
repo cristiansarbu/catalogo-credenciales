@@ -1,8 +1,8 @@
 const { body } = require('express-validator');
 
-
+// Escapar el input para prevenir que el usuario inserte elementos HTML
 const credentialSearchValidator = [
-    body('uuid', 'El id de la credencial debe ser un valor alfanumérico.').escape()
+    body('uuid', 'error').escape()
 ]
 
 module.exports = credentialSearchValidator;
