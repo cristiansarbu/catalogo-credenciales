@@ -3,13 +3,17 @@ const datosJson = require("../public/misc/test.json");
 
 module.exports = {
   get: (req, res) => {
+    // Recoger parámetros de query (/credentials?page=1)
     const datosParams = req.query;
-    if (datosParams.page) {
+
+    // Validar la página y devolver página = 0 como default
+    if (parseInt(datosParams.page)) {
       datosParams.page = parseInt(datosParams.page);
     } else {
       datosParams.page = 0
     }
 
+    // Solicitud a API de Gaia
     axios
       .get("https://ces-main.lab.gaia-x.eu/credentials-events", {
         params: {
