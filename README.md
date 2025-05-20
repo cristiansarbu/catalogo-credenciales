@@ -8,7 +8,6 @@
 
 ## Rutas:
 ```
-
 GET   /                          Muestra página principal
 GET   /credentials               Muestra página con credenciales
 GET   /credential-by-id/(:id)    Muestra página con la credencial del parámetro. Si no recibe el parámetro, muestra el formulario de búsqueda
@@ -16,6 +15,4 @@ GET   /upload-credential         Muestra página con el formulario para subir cr
 
 POST  /credential-by-id          Redirecciona a la página de la credencial buscada. (Se utiliza para el formulario de búsqueda)
 POST  /upload-credential         Envía la credencial .json a la API de credentials-events
-
-
 ```
