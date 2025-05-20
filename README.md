@@ -1,5 +1,5 @@
 # Catálogo Credential Events Gaia-X
-Proyecto con NodeJS y Express.js que utilizando Pug renderiza varias páginas en el servidor para interaccionar con la API de Gaia-X.
+Proyecto con NodeJS y Express.js que utilizando Pug renderiza varias páginas en el servidor para interaccionar con la API de Credentials Event Services de Gaia-X.
 
 ## Funcionalidades:
 - Obtener credenciales de la API credentials-events-service con paginación y mostrar detalles.
@@ -10,7 +10,8 @@ Proyecto con NodeJS y Express.js que utilizando Pug renderiza varias páginas en
 ## Rutas:
 ```
 GET   /                          Muestra página principal
-GET   /credentials               Muestra página con credenciales
+GET   /credentials               Muestra página con credenciales. Elementos paginados con el parámetro
+                                 opcional '?page=x'.
 GET   /credential-by-id/(:id)    Muestra página con la credencial del parámetro. Si no recibe el parámetro,
                                  muestra el formulario de búsqueda. Si recibe el parámetro '?detailed=true'
                                  muestra la credencial completa en formato JSON.    
