@@ -86,6 +86,7 @@ p {
 
 .submit-button {
   margin-left: 0.5rem;
+  max-width: 4rem;
 }
 
 .navbar {
@@ -95,7 +96,7 @@ p {
   padding-left: 3.6rem;
   padding-right: 3.6rem;
   background-color: white;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .08);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
 }
 
 .nav-list {
@@ -142,6 +143,52 @@ main {
   /* background-color: #5c636a; */
 }
 
+.container-full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  margin-bottom: 7rem;
+  border: 1px solid lightgray;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.78rem;
+  background-color: white;
+  min-width: 35rem;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-card {
+  margin-bottom: 7rem;
+  border: 1px solid lightgray;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.78rem;
+  background-color: white;
+  max-width: 18rem;
+  text-align: center;
+}
+
+.error-card h2 {
+  margin: 0;
+}
+
+.error-margin {
+  margin-top: 5%;
+}
+
 /* Media Query para Móvil */
 @media only screen and (max-width: 600px) {
   .navbar {
@@ -174,7 +221,6 @@ main {
     align-items: center;
     gap: 1rem;
   }
-
 }
 
 /* Media Query para Tablet  */

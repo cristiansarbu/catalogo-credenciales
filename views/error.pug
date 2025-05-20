@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  h1 Lo sentimos, ha habido un error.
-  if error
-    h2 Error #{error.status}
-    pre #{error.stack}
-  else
-    h3 #{ errorMsg }
+  .container-full.error-margin
+    .error-card
+      if (error && errorMsg)
+        h2 Error #{ error.status }
+        h3 #{ errorMsg }
+      else if (error) 
+        h2 Error #{ error.status }
+      else
+        h3 #{ errorMsg }

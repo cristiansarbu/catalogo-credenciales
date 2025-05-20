@@ -5,8 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var credentialsRouter = require('./routes/credentials')
-var credentialbyidRouter = require('./routes/credential-by-id')
+var credentialsRouter = require('./routes/credentials');
+var credentialbyidRouter = require('./routes/credential-by-id');
+var uploadCredentialRouter = require('./routes/upload-credential');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/credentials', credentialsRouter);
 app.use('/credential-by-id', credentialbyidRouter);
+app.use('/upload-credential', uploadCredentialRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
