@@ -16,3 +16,9 @@ GET   /upload-credential         Muestra página con el formulario para subir cr
 POST  /credential-by-id          Redirecciona a la página de la credencial buscada. (Se utiliza para el formulario de búsqueda)
 POST  /upload-credential         Envía la credencial .json a la API de credentials-events
 ```
+
+## Dependencias principales
+- express-validator 7.2.1 -> Validación y sanitización de los formularios, las query parameters y las route parameters.
+- AxiosHTTP 1.8.4 -> Realización de solicitudes GET y POST a la API de credentials-events.
+- Multer 2.0.0 -> Tratamiento del formulario y la subida de credenciales.
+- Pug.js 2.0.0 -> Renderizado server-side de las vistas.
