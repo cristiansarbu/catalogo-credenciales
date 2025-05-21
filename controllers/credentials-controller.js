@@ -4,12 +4,13 @@ const { validationResult } = require("express-validator");
 
 module.exports = {
   get: (req, res) => {
+    // Validar query param
     const errorsQueryParam = validationResult(req);
     if (errorsQueryParam.isEmpty()) {
-      // Recoger parámetros de query (/credentials?page=1)
+      // Recoger query param (/credentials?page=1)
       const datosParams = req.query;
 
-      // Validar la página y devolver página = 0 como default
+      // Devolver página como int o 0 como default si no existe 
       if (parseInt(datosParams.page)) {
         datosParams.page = parseInt(datosParams.page);
       } else {

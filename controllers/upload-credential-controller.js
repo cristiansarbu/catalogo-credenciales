@@ -6,7 +6,7 @@ module.exports = {
     res.render("upload-credential");
   },
   post: (req, res) => {
-    // Leer y obtener un objeto a partir del fichero de la credencial subido
+    // Leer y obtener objeto a partir del fichero de la credencial
     fs.readFile(req.file.path, function (err, data) {
       if (err) {
         const error = err;
