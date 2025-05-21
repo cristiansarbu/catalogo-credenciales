@@ -13,6 +13,7 @@ module.exports = {
         res.render("error", { error });
       }
       let credencial = JSON.parse(data);
+
       // Enviar la solicitud POST de tipo json a la api CES con la credencial
       axios
         .post("https://ces-main.lab.gaia-x.eu/credentials-events", credencial, {
@@ -26,6 +27,14 @@ module.exports = {
             : "Intentalo más tarde.";
           res.render("error", { error, errorMsg });
         });
+
+      // Eliminar el archivo  
+      fs.unlink(req.file.path, (err) => {
+        if (err) {
+          const error = err;
+          res.render("error", { error });
+        }
+      })
     });
   },
 };
