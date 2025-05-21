@@ -221,6 +221,10 @@ main {
     align-items: center;
     gap: 1rem;
   }
+
+  .form-card {
+    min-width: 0;
+  }
 }
 
 /* Media Query para Tablet  */
