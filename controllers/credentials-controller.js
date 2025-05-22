@@ -1,6 +1,7 @@
 const axios = require("axios");
 const datosJson = require("../public/misc/test.json");
 const { validationResult } = require("express-validator");
+const { ces } = require("../config");
 
 module.exports = {
   get: (req, res) => {
@@ -17,9 +18,9 @@ module.exports = {
         datosParams.page = 0;
       }
 
-      // Solicitud a API de Gaia
+      // Solicitud a API de CES
       axios
-        .get("https://ces-main.lab.gaia-x.eu/credentials-events", {
+        .get(ces, {
           params: {
             page: datosParams.page,
             size: 20,

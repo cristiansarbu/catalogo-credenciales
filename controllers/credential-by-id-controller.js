@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { validationResult } = require("express-validator");
-const datosJson = require("../public/misc/test.json");
+const { ces } = require("../config");
 
 module.exports = {
   // Recibe: /credential-by-id/{id}?detailed={true} -> Route parameter y query parameter
@@ -11,7 +11,7 @@ module.exports = {
       const errorsRouteParameters = validationResult(req);
       if (errorsRouteParameters.isEmpty()) {
         // Solicitud Axios a la API de CES
-        const requestUrl = `https://ces-main.lab.gaia-x.eu/credentials-events/${req.params.id}`;
+        const requestUrl = ces + `/${req.params.id}`;
         axios
           .get(requestUrl)
           .then((response) => {

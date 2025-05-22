@@ -1,5 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
+const { ces } = require("../config");
 
 module.exports = {
   get: (req, res) => {
@@ -16,7 +17,7 @@ module.exports = {
 
       // Enviar la solicitud POST de tipo json a la api CES con la credencial
       axios
-        .post("https://ces-main.lab.gaia-x.eu/credentials-events", credencial, {
+        .post(ces, credencial, {
           headers: {
             "Content-Type": "application/json",
           },

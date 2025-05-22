@@ -6,31 +6,39 @@
 
 var app = require("../app");
 var debug = require("debug")("catalogocredenciales:server");
-// var http = require("http");
+var http = require("http");
 var https = require("https");
 var fs = require("fs");
-var options = {
-  cert: fs.readFileSync(
-    "/etc/letsencrypt/live/csarbu.arlabdevelopments.com/fullchain.pem"
-  ),
-  key: fs.readFileSync(
-    "/etc/letsencrypt/live/csarbu.arlabdevelopments.com/privkey.pem"
-  ),
-};
+var { ssl } = require("../config");
+
+let mode = "http";
+
+try {
+  var options = {
+    cert: fs.readFileSync(ssl.cert),
+    key: fs.readFileSync(ssl.key),
+  };
+  mode = "https";
+} catch (err) {
+  console.error("ERROR: No se ha encontrado el certificado SSL. Verifique las rutas configuradas.");
+}
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "443");
+var port = normalizePort(process.env.PORT || (mode == 'http' ? '80' : '443'));
 app.set("port", port);
 
 /**
- * Create HTTP server.
+ * Create HTTP/HTTPS server.
  */
 
-// var server = http.createServer(app);
-var server = https.createServer(options, app);
+if (mode == 'http') {
+  var server = http.createServer(app);
+} else {
+  var server = https.createServer(options, app);
+}
 
 /**
  * Listen on provided port, on all network interfaces.
