@@ -32,8 +32,8 @@ directorio /certs de la aplicación.
 Para desplegar la aplicación con Docker, utilizar los siguientes comandos:
 ```
 docker pull ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
-docker run --name catalogo-credenciales -p 443:443 -p 80:80 -d -v [DIRECTORIO QUE CONTIENE EL CERTIFICADO SSL]:/app/certs ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
 
+docker run --name catalogo-credenciales -p 443:443 -p 80:80 -d -v [DIRECTORIO QUE CONTIENE EL CERTIFICADO SSL]:/app/certs ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
 ```
 
 ## Dependencias principales:
