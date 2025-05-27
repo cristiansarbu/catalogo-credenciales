@@ -24,10 +24,19 @@ POST  /upload-credential         Envía la credencial .json a la API de credenti
 ## Configuración:
 
 El archivo config.js contiene la configuración para el certificado SSL y la ruta de la API de Credentials Event Service. La aplicación 
-por defecto se despliega en un entorno HTTP, pero automáticamente cambia a HTTPS si se configuran 
-las rutas del certificado correctamente.
+por defecto se despliega en un entorno HTTP, pero automáticamente cambia a HTTPS si se encuentran los archivos del certificado en el
+directorio /certs de la aplicación. 
 
-## Dependencias principales
+## Despliegue en Docker:
+
+Para desplegar la aplicación con Docker, utilizar los siguientes comandos:
+```
+docker pull ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
+docker run --name catalogo-credenciales -p 443:443 -p 80:80 -d -v [DIRECTORIO QUE CONTIENE EL CERTIFICADO SSL]:/app/certs ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
+
+```
+
+## Dependencias principales:
 - express-validator 7.2.1 -> Validación y sanitización de los formularios, las query parameters y las route parameters.
 - AxiosHTTP 1.8.4 -> Realización de solicitudes GET y POST a la API de credentials-events.
 - Multer 2.0.0 -> Tratamiento del formulario y la subida de credenciales.
