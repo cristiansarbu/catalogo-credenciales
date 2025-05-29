@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { validationResult } = require("express-validator");
-const { ces } = require("../config");
+const { ces, cesv2 } = require("../config");
 
 module.exports = {
   // Recibe: /credential-by-id/{id}?detailed={true} -> Route parameter y query parameter
@@ -24,7 +24,18 @@ module.exports = {
             }
           })
           .catch((error) => {
-            res.render("error", { error });
+            const v2requestUrl = cesv2 + `/${req.params.id}`;
+            axios.get(v2requestUrl).then((response) => {
+              const datosJson = response.data;
+
+              if (queryParameters.detailed == "true") {
+                res.json(datosJson);
+              } else {
+                res.render("credential-by-id/credential-by-id", { datosJson });
+              }
+            }).catch((error) => {
+              res.render("error", { error });
+            });
           });
       } else {
         // Tratamiento de error en validación del route param

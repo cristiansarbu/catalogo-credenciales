@@ -1,14 +1,15 @@
 const axios = require("axios");
 const datosJson = require("../public/misc/test.json");
 const { validationResult } = require("express-validator");
-const { ces } = require("../config");
+const { ces, cesv2 } = require("../config");
+
 
 module.exports = {
   get: (req, res) => {
     // Validar query param
     const errorsQueryParam = validationResult(req);
     if (errorsQueryParam.isEmpty()) {
-      // Recoger query param (/credentials?page=1)
+      // Recoger query param (/credentials?page=1&type=tagus)
       const datosParams = req.query;
 
       // Devolver página como int o 0 como default si no existe 
@@ -18,9 +19,9 @@ module.exports = {
         datosParams.page = 0;
       }
 
-      // Solicitud a API de CES
+      // Solicitud a API de CES (v1 o v2 según query parameter)
       axios
-        .get(ces, {
+        .get(datosParams.type == 'tagus'? ces : cesv2, {
           params: {
             page: datosParams.page,
             size: 20,

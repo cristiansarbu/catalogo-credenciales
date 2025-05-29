@@ -15,5 +15,6 @@ const ssl = {
 */
 
 const ces = "https://ces-main.lab.gaia-x.eu/credentials-events";
+const cesv2= "https://ces-development.lab.gaia-x.eu/v2/credentials-events";
 
-module.exports = { ssl, ces };
+module.exports = { ssl, ces, cesv2 };
