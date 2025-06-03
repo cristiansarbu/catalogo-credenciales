@@ -8,6 +8,15 @@ body {
   overflow-x: hidden;
 }
 
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
 a {
   color: #00b7ff;
 }
@@ -128,6 +137,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: end;
+  gap: 0.7rem;
 }
 
 .button-container button {
@@ -148,6 +158,34 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.button-container a {
+  text-decoration: none;
+}
+
+.criterios-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  background-color: #106cfc;
+  border: 0;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.criterios-button span {
+  padding: 7px 7px;
+}
+
+.criterios-button i {
+  box-sizing: border-box;
+  padding: 2px 15px;
+}
+
+.button-container button {
+  height: 100%;
 }
 
 .form-card {
@@ -227,6 +265,142 @@ main {
 
 .type-link-active {
   background-color: lightgray;
+}
+
+.icon-dropdown {
+  content: "";
+  background-image: url("/images/dropdown_principal.png");
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-dropdown-active {
+  transform: rotate(-90deg);
+}
+
+.criteria-container {
+  display: none !important;
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+}
+
+.criteria-container-active {
+  display: block !important;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+body:has(.anchor-tooltip:hover) .criteria-container {
+  overflow: visible;
+}
+
+body:has(.anchor-tooltip:hover) .criteria-container-active {
+  overflow: visible;
+}
+
+.criterion {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 20px; */
+}
+
+.criterion h3 {
+  margin: 0;
+}
+
+.icon-dropdown-black {
+  content: "";
+  background-image: url("/images/dropdown_black.png");
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-90deg);
+}
+
+.icon-dropdown-black-active {
+  transform: rotate(-180deg);
+}
+
+.wrapper-transition {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-out;
+}
+
+.wrapper-transition-active {
+  grid-template-rows: 1fr;
+}
+
+.criterion-satisfied {
+  display: none !important;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-bottom: 20px;
+  max-width: 521px;
+  flex-wrap: wrap;
+}
+
+.criterion-satisfied-active {
+  display: flex !important;
+}
+
+.criterion-satisfied button {
+  text-decoration: none;
+  padding: 8px;
+  /* border: 1px solid black; */
+  /* color: #44546f; */
+  color: black;
+  background-color: #f1f2f4;
+  border-radius: 7px;
+  /* font-weight: 600; */
+}
+
+.criterion-satisfied button:hover {
+  background-color: lightgray;
+}
+
+.anchor-tooltip {
+  position: relative;
+}
+
+.anchor-tooltip .tooltip-text {
+  visibility: hidden;
+  width: 300px;
+  /* background-color: #186cfc; */
+  background-color: #706c6c;
+  /* color: #fff; */
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -150px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+.anchor-tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.criterion-satisfied h4 {
+  margin: 0;
+  font-weight: normal;
 }
 
 /* Media Query para Móvil */

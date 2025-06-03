@@ -14,7 +14,8 @@ const credentialRouteParamQueryParamValidator = [
 
 
 const credentialsPageQueryParamValidator = [
-    query('page', 'Enlace incorrecto.').optional().trim().isNumeric().escape()
+    query('page', 'Enlace incorrecto.').optional().trim().isNumeric().escape(),
+    query('type', 'Tipo incorrecto').optional().trim().isString().escape()
 ]
 
 module.exports = { credentialSearchFormValidator, credentialRouteParamQueryParamValidator, credentialsPageQueryParamValidator }
