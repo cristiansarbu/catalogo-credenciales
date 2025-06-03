@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const { ces } = require("../config");
+const { ces, cesv2 } = require("../config");
 
 module.exports = {
   get: (req, res) => {
@@ -15,9 +15,15 @@ module.exports = {
       }
       let credencial = JSON.parse(data);
 
+      if (req.body.tipo == 'Loire') {
+        if (!credencial.data_base64) {
+          res.render("error", { errorMsg: 'La credencial debe contener el campo data_base64 con el JSON Web Token.' })
+        }
+      }
+
       // Enviar la solicitud POST de tipo json a la api CES con la credencial
       axios
-        .post(ces, credencial, {
+        .post(req.body.tipo == 'Tagus' ? ces : cesv2, credencial, {
           headers: {
             "Content-Type": "application/json",
           },

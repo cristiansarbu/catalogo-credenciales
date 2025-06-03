@@ -97,6 +97,14 @@ p {
 .submit-button {
   margin-left: 0.5rem;
   max-width: 4rem;
+  border: 1px solid black;
+  background-color: rgb(226, 226, 226);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.submit-button:hover {
+  background-color: darkgray;
 }
 
 .navbar {
@@ -401,6 +409,101 @@ body:has(.anchor-tooltip:hover) .criteria-container-active {
 .criterion-satisfied h4 {
   margin: 0;
   font-weight: normal;
+}
+
+.upload-form-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.credential-type-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.credential-type-button {
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.credential-type-button:hover {
+  background-color: darkgray;
+}
+
+.input-file {
+  margin-bottom: 1.75rem;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-card h4 {
+  margin-bottom: 0.75rem;
+}
+
+.credential-type-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.container-cred-type {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container-cred-type:hover input ~ .checkmark {
+  background-color: darkgray;
+}
+
+.container-cred-type input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container-cred-type input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container-cred-type .checkmark:after {
+  top: 5px;
+  left: 5.25px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.container-cred-type input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  display: block;
+  position: relative;
+  height: 19px;
+  width: 19px;
+  background-color: #d4d2d2;
+  border-radius: 50%;
 }
 
 /* Media Query para Móvil */
