@@ -166,18 +166,23 @@ Proyecto con NodeJS y Express.js que utilizando Pug renderiza varias páginas en
 
 ## Configuración:
 
-El archivo config.js contiene la configuración para el certificado SSL y la ruta de la API de Credentials Event Service. La aplicación 
+El archivo `config.js` contiene la configuración para el certificado SSL y la ruta de la API de Credentials Event Service. La aplicación 
 por defecto se despliega en un entorno HTTP, pero automáticamente cambia a HTTPS si se encuentran los archivos del certificado en el
-directorio /certs de la aplicación. 
+directorio `/certs` de la aplicación.
+
+En el directorio `/certs`, se deben incluir los dos archivos siguientes:
+`fullchain.pem` (cadena del certificado entera, o concatenación de cert.pem y chain.pem) y `privkey.pem` (clave privada del certificado)
 
 ## Despliegue en Docker:
 
 Para desplegar la aplicación con Docker, utilizar los siguientes comandos:
-```
+```sh
 docker pull ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
 
 docker run --name catalogo-credenciales -p 443:443 -p 80:80 -d -v <DIRECTORIO QUE CONTIENE EL CERTIFICADO SSL>:/app/certs ghcr.io/cristiansarbu/catalogo-credenciales-ces:1.0.0
 ```
+
+El comando de ejecución arranca el contenedor con los puertos 443 y 80 asignados, separado de la línea de comandos y con el directorio del certificado SSL del usuario asignado como volumen.
 
 ## Dependencias principales:
 - express-validator 7.2.1 -> Validación y sanitización de los formularios, las query parameters y las route parameters.
