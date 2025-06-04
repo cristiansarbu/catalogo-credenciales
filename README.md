@@ -8,18 +8,161 @@ Proyecto con NodeJS y Express.js que utilizando Pug renderiza varias páginas en
 - Subir credencial mediante la API credentials-events-service.
 
 ## Rutas:
-```
-GET   /                          Muestra página principal
-GET   /credentials               Muestra página con credenciales. Elementos paginados con el parámetro
-                                 opcional '?page=x'.
-GET   /credential-by-id/(:id)    Muestra página con la credencial del parámetro. Si no recibe el parámetro,
-                                 muestra el formulario de búsqueda. Si recibe el parámetro '?detailed=true'
-                                 muestra la credencial completa en formato JSON.    
-GET   /upload-credential         Muestra página con el formulario para subir credenciales
+#### GET
 
-POST  /credential-by-id          Redirecciona a la página de la credencial buscada. (Se utiliza para el formulario de búsqueda)
-POST  /upload-credential         Envía la credencial .json a la API de credentials-events
-```
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>(Muestra la página principal)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/credentials</b></code> <code>(Muestra la página con credenciales paginadas)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `page` |  optional | int ($int64)   | Número de la página de credenciales empezando desde 0. Predeterminado: 0        |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+##### Page Rendered Errors
+
+> | http code     | message                      | meaning                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `-`         | Enlace incorrecto        | El parámetro de página insertado es incorrecto.   
+> | `404`         | Error 404        | La API no ha encontrado la página solicitada.  
+
+
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/credential-by-id/{id}</b></code> <code>(Muestra la página con la credencial elegida o, en su defecto, el formulario de búsqueda de credenciales)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `{id}` |  required | string   | UUID de la credencial a buscar        |
+> | `detailed` |  optional | string   | Indicador de vista completa de la credencial (muestra el JSON completo): `true`        |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+##### Page Rendered Errors
+
+> | http code     | message                      | meaning                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `-`         | Formato incorrecto. La credencial de la ruta debe tener formato UUID.        | El parámetro de ruta de la credencial es inválido.   
+> | `-`         | Enlace incorrecto        | El parámetro de consulta `detailed`es inválido 
+
+</details>
+
+<details>
+ <summary><code>GET</code> <code><b>/upload-credential</b></code> <code>(Muestra el formulario de subida de credenciales)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id` |  required | string   | UUID de la credencial a buscar        |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+##### Page Rendered Errors
+
+> | http code     | message                      | meaning                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `-`         | Formato incorrecto. La credencial de la ruta debe tener formato UUID.        | El parámetro de ruta de la credencial es inválido.   
+> | `-`         | Enlace incorrecto        | El parámetro de consulta `detailed`es inválido 
+
+</details>
+
+#### POST
+
+<details>
+ <summary><code>POST</code> <code><b>/credential-by-id/{id}</b></code> <code>(Redirecciona a la página de la credencial buscada, utilizado para el formulario de búsqueda)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id` |  required | string   | UUID de la credencial a buscar    
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `uuid` |  x-www-form-urlencoded | string   | UUID de la credencial a buscar 
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+##### Page Rendered Errors
+
+> | http code     | message                      | meaning                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `404`         | Error 404        | Error de la api CES.
+> | `-`         | Formato incorrecto. La credencial debe tener formato UUID.        | El formato de la UUID de la credencial es inválido.
+
+</details>
+
+<details>
+ <summary><code>POST</code> <code><b>/upload-credential</b></code> <code>(Envia una solicitud de subida a la API de CES con la credencial)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `credential` |  form-data | file (JSON)   | Credencial en formato `.json` 
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `text/plain;charset=UTF-8`        | HTML string                                                         |
+
+##### Page Rendered Errors
+
+> | http code     | message                      | meaning                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `400`         | Event format incorrect        | Error interno del CES por formato incorrecto.   
+> | `409`         | Event data signatura invalid or invalid issuer        | Error interno del CES por validez de la credencial.
+> | `500`         | Technical error        | Error interno del CES.
+> | `-`         | La credencial debe contener el campo data_base64 con el JSON Web Token        | Falta el campo data_base64 o se ha seleccionado como tipo Loire y se ha subido una credencial Tagus.
+> | `-`         | Solo se admiten ficheros JSON       | Se ha subido un archivo de tipo diferente a JSON.
+
+</details>
 
 ## Configuración:
 
