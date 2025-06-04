@@ -439,6 +439,7 @@ body:has(.anchor-tooltip:hover) .criteria-container-active {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 1.5rem;
 }
 
 .form-card h4 {
@@ -505,6 +506,35 @@ body:has(.anchor-tooltip:hover) .criteria-container-active {
   background-color: #d4d2d2;
   border-radius: 50%;
 }
+
+.file-upload {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-button {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 4px;
+  outline: none;
+  padding: 0.4rem 0.5rem;
+  margin-right: 15px;
+  color: black;
+  cursor: pointer;
+}
+
+.file-upload-button:hover {
+  background-color: darkgray;
+}
+
 
 /* Media Query para Móvil */
 @media only screen and (max-width: 600px) {

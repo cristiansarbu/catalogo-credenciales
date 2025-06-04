@@ -20,3 +20,26 @@ for (let i = 0; i < DropdownBlackLink.length; i++) {
         criterionSatisfied[i].classList.toggle("criterion-satisfied-active");
     })
 }
+
+document.querySelectorAll('.file-upload-button').forEach((button) => {
+  const hiddenInput = button.parentElement.querySelector('.file-upload-input');
+  const label = button.parentElement.querySelector('.file-upload-label');
+  const defaultLabelText = 'Ningún archivo seleccionado';
+
+  // Texto predeterminado para el label
+  label.textContent = defaultLabelText;
+  label.title = defaultLabelText;
+
+  button.addEventListener('click', function() {
+    hiddenInput.click();
+  })
+
+  hiddenInput.addEventListener('change', function() {
+    const filenameList = Array.from(hiddenInput.files).map((file) => {
+      return file.name;
+    })
+
+    label.textContent = filenameList.join(', ') || defaultLabelText;
+    label.title = label.textContent;
+  })
+})

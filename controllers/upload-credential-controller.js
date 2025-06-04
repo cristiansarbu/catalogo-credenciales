@@ -18,6 +18,14 @@ module.exports = {
       if (req.body.tipo == 'Loire') {
         if (!credencial.data_base64) {
           res.render("error", { errorMsg: 'La credencial debe contener el campo data_base64 con el JSON Web Token.' })
+          // Eliminar el archivo  
+          fs.unlink(req.file.path, (err) => {
+            if (err) {
+              const error = err;
+              res.render("error", { error });
+            }
+          })
+          return;
         }
       }
 
