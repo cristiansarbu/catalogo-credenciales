@@ -7,15 +7,24 @@ html
   body  
     .navbar
       h1 Gaia-X Catalog
-      ul.nav-list 
-        li.nav-item
-          a.nav-link(href="/") Inicio
-        li.nav-item
-          a.nav-link(href="/credentials") Credenciales
-        li.nav-item
-          a.nav-link(href="/credential-by-id") Credencial por ID
-        li.nav-item
-          a.nav-link(href="/upload-credential") Subir credencial
+      .navbar-secondary-container 
+        form#lang-switcher-form(action='/change-language', method='get')
+          .lang-switch
+            input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", onchange='this.form.submit()', value='eng')
+            //- input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", onClick="() => console.log('enabled')", disabled="console.log('disabled')")
+            //- input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", value='eng', enabled="alert('hola')")
+            label#lang-toggle-label(for="language-toggle")
+            span.on ES
+            span.off EN
+        ul.nav-list 
+          li.nav-item
+            a.nav-link(href="/") Inicio
+          li.nav-item
+            a.nav-link(href="/credentials") Credenciales
+          li.nav-item
+            a.nav-link(href="/credential-by-id") Credencial por ID
+          li.nav-item
+            a.nav-link(href="/upload-credential") Subir credencial
     main
       block content
     script(src='/javascripts/main.js')
