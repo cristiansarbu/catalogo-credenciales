@@ -30,7 +30,39 @@ module.exports = {
         })
         .then((response) => {
           const datosJson = response.data;
-          res.render("credentials", { datosJson, datosParams, criteria });
+          res.render("credentials", {
+            datosJson,
+            datosParams,
+            criteria,
+            navbarstart: req.t("navbar-start"),
+            navbarcredentials: req.t("navbar-credentials"),
+            navbarcredentialid: req.t("navbar-credential-id"),
+            navbaruploadcredential: req.t("navbar-upload-credential"),
+            credentialheader: req.t("credential-header"),
+            credentialview: req.t("credential-view"),
+            credentialcriteriabutton: req.t("credential-criteria-button"),
+            credentialcriteriacontractual: req.t(
+              "credential-criteria-contractual"
+            ),
+            credentialcriteriadataprotection: req.t(
+              "credential-criteria-dataprotection"
+            ),
+            credentialcriteriacybersecurity: req.t(
+              "credential-criteria-cybersecurity"
+            ),
+            credentialcriteriaportability: req.t(
+              "credential-criteria-portability"
+            ),
+            credentialcriteriaeuropeancontrol: req.t(
+              "credential-criteria-europeancontrol"
+            ),
+            credentialcriteriasustainability: req.t(
+              "credential-criteria-sustainability"
+            ),
+            credentialcriteriasustainabilityemptymessage: req.t(
+              "credential-criteria-sustainability-emptymessage"
+            ),
+          });
         })
         .catch((error) => {
           res.render("error", { error });

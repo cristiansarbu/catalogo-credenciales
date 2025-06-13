@@ -11,20 +11,18 @@ html
         form#lang-switcher-form(action='/change-language', method='get')
           .lang-switch
             input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", onchange='this.form.submit()', value='eng')
-            //- input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", onClick="() => console.log('enabled')", disabled="console.log('disabled')")
-            //- input.lang-toggle.check-toggle.check-toggle-round-flat(type="checkbox", name="lng", id="language-toggle", value='eng', enabled="alert('hola')")
             label#lang-toggle-label(for="language-toggle")
             span.on ES
             span.off EN
         ul.nav-list 
           li.nav-item
-            a.nav-link(href="/") Inicio
+            a.nav-link(href="/") #{navbarstart}
           li.nav-item
-            a.nav-link(href="/credentials") Credenciales
+            a.nav-link(href="/credentials") #{navbarcredentials}
           li.nav-item
-            a.nav-link(href="/credential-by-id") Credencial por ID
+            a.nav-link(href="/credential-by-id") #{navbarcredentialid}
           li.nav-item
-            a.nav-link(href="/upload-credential") Subir credencial
+            a.nav-link(href="/upload-credential") #{navbaruploadcredential}
     main
       block content
     script(src='/javascripts/main.js')

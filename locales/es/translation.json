@@ -1,3 +1,18 @@
 {
-    "message": "Bienvenido a la página principal!"
+    "navbar-start": "Inicio",
+    "navbar-credentials": "Credenciales",
+    "navbar-credential-id": "Credencial por ID",
+    "navbar-upload-credential": "Subir credencial",
+    "message": "Bienvenido a la página principal!",
+    "credential-header": "Credenciales",
+    "credential-view": "Ver",
+    "credential-criteria-button": "Criterios",
+    "credential-criteria-contractual": "Contractual",
+    "credential-criteria-dataprotection": "Protección de datos",
+    "credential-criteria-cybersecurity": "Ciberseguridad",
+    "credential-criteria-portability": "Portabilidad",
+    "credential-criteria-europeancontrol": "Control europeo",
+    "credential-criteria-sustainability": "Sostenibilidad",
+    "credential-criteria-sustainability-emptymessage": "Esta credencial no cumple los criterios de sostenibilidad.",
+    "credentialbyid-header": "Credencial por ID"
 }
